@@ -21,11 +21,20 @@ class InterfaceController: WKInterfaceController {
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
+        getPrice()
     }
     
-    override func didDeactivate() {
-        // This method is called when watch view controller is no longer visible
-        super.didDeactivate()
+    func getPrice() {
+        let url = URL(string: "https://api.coindesk.com/v1/bpi/currentprice.json")!
+        URLSession.shared.dataTask(with: url) { (data: Data?, response: URLResponse?, error: Error?) in
+            if error == nil {
+                //success
+                print("It worked")
+            }
+            else {
+                print("Error caught")
+            }
+        }.resume()
     }
 
 }
