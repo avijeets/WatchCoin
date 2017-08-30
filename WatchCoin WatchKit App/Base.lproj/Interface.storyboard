@@ -20,6 +20,10 @@
                         </label>
                         <label alignment="center" text="Updating ..." id="Y5K-Vc-Gls"/>
                     </items>
+                    <connections>
+                        <outlet property="priceLabel" destination="Lax-Ap-jho" id="hjj-rT-CUV"/>
+                        <outlet property="updatingLabel" destination="Y5K-Vc-Gls" id="JFm-3B-3gc"/>
+                    </connections>
                 </controller>
             </objects>
         </scene>

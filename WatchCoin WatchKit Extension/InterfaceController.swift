@@ -11,7 +11,9 @@ import Foundation
 
 
 class InterfaceController: WKInterfaceController {
-
+    @IBOutlet var priceLabel: WKInterfaceLabel!
+    
+    @IBOutlet var updatingLabel: WKInterfaceLabel!
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
@@ -30,6 +32,17 @@ class InterfaceController: WKInterfaceController {
             if error == nil {
                 //success
                 print("It worked")
+                
+                if data != nil {
+                    do {
+                        let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String:Any]
+                        guard let bpi = json["bpi"] as? [String:Any], let USD = bpi["USD"] as? [String:Any], let rateFloat = USD["rate_float"] as? Float else {
+                            return
+                        }
+                        print(rateFloat)
+                    }
+                    catch {}
+                }
             }
             else {
                 print("Error caught")
