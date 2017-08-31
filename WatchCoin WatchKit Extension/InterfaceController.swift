@@ -39,7 +39,7 @@ class InterfaceController: WKInterfaceController {
                         guard let bpi = json["bpi"] as? [String:Any], let USD = bpi["USD"] as? [String:Any], let rateFloat = USD["rate_float"] as? Float else {
                             return
                         }
-                        print(rateFloat)
+                        self.priceLabel.setText("\(rateFloat)")
                     }
                     catch {}
                 }
